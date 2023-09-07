@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h1 style="text-align: center; font-size: 36px; color: black;">
+            <h:outputText  value="#{bundle.CreateCitasTitle}"></h:outputText>
+            </h1>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form styleClass="tu-clase-css">
+                 
+
+
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCitasLabel_idCitas}" for="idCitas" />
+                    <h:inputText id="idCitas"  class="form-control border-success" value="#{citasController.selected.idCitas}" title="#{bundle.CreateCitasTitle_idCitas}" required="true" requiredMessage="#{bundle.CreateCitasRequiredMessage_idCitas}"/>
+                    <h:outputLabel value="#{bundle.CreateCitasLabel_fechaCitas}" for="fechaCitas" />
+                    <h:inputText id="fechaCitas"  class="form-control border-success" value="#{citasController.selected.fechaCitas}" title="#{bundle.CreateCitasTitle_fechaCitas}" required="true" requiredMessage="#{bundle.CreateCitasRequiredMessage_fechaCitas}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateCitasLabel_tipoServicio}" for="tipoServicio" />
+                    <h:inputText id="tipoServicio"  class="form-control border-success" value="#{citasController.selected.tipoServicio}" title="#{bundle.CreateCitasTitle_tipoServicio}" required="true" requiredMessage="#{bundle.CreateCitasRequiredMessage_tipoServicio}"/>
+                    <h:outputLabel value="#{bundle.CreateCitasLabel_idVeterinario}" for="idVeterinario" />
+                    <h:selectOneMenu class="form-select border-success"  id="idVeterinario" value="#{citasController.selected.idVeterinario}" title="#{bundle.CreateCitasTitle_idVeterinario}" required="true" requiredMessage="#{bundle.CreateCitasRequiredMessage_idVeterinario}">
+                        <f:selectItems value="#{veterinarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu> 
+                    <h:outputLabel value="#{bundle.CreateCitasLabel_idMascota}" for="idMascota" />
+                    <h:selectOneMenu id="idMascota"  class="form-select border-success" value="#{citasController.selected.idMascota}" title="#{bundle.CreateCitasTitle_idMascota}" required="true" requiredMessage="#{bundle.CreateCitasRequiredMessage_idMascota}">
+                        <f:selectItems   value="#{mascotaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{citasController.create}" class="btn btn-primary" value="#{bundle.CreateCitasSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{citasController.prepareList}"  class="btn btn-primary" value="#{bundle.CreateCitasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" class="btn btn-primary" value="#{bundle.CreateCitasIndexLink}"/>
+            </h:form>
+            
+        </ui:define>
+    </ui:composition>
+    
+
+</html>

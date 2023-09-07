@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewReservacitaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewReservacitaLabel_idReserva}"/>
+                    <h:outputText value="#{reservacitaController.selected.idReserva}" title="#{bundle.ViewReservacitaTitle_idReserva}"/>
+                    <h:outputText value="#{bundle.ViewReservacitaLabel_nombre}"/>
+                    <h:outputText value="#{reservacitaController.selected.nombre}" title="#{bundle.ViewReservacitaTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewReservacitaLabel_apellido}"/>
+                    <h:outputText value="#{reservacitaController.selected.apellido}" title="#{bundle.ViewReservacitaTitle_apellido}"/>
+                    <h:outputText value="#{bundle.ViewReservacitaLabel_correo}"/>
+                    <h:outputText value="#{reservacitaController.selected.correo}" title="#{bundle.ViewReservacitaTitle_correo}"/>
+                    <h:outputText value="#{bundle.ViewReservacitaLabel_telefono}"/>
+                    <h:outputText value="#{reservacitaController.selected.telefono}" title="#{bundle.ViewReservacitaTitle_telefono}"/>
+                    <h:outputText value="#{bundle.ViewReservacitaLabel_nombreMascota}"/>
+                    <h:outputText value="#{reservacitaController.selected.nombreMascota}" title="#{bundle.ViewReservacitaTitle_nombreMascota}"/>
+                    <h:outputText value="#{bundle.ViewReservacitaLabel_tipoMascota}"/>
+                    <h:outputText value="#{reservacitaController.selected.tipoMascota}" title="#{bundle.ViewReservacitaTitle_tipoMascota}"/>
+                    <h:outputText value="#{bundle.ViewReservacitaLabel_tipoServicio}"/>
+                    <h:outputText value="#{reservacitaController.selected.tipoServicio}" title="#{bundle.ViewReservacitaTitle_tipoServicio}"/>
+                    <h:outputText value="#{bundle.ViewReservacitaLabel_estado}"/>
+                    <h:outputText value="#{reservacitaController.selected.estado}" title="#{bundle.ViewReservacitaTitle_estado}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{reservacitaController.destroyAndView}" value="#{bundle.ViewReservacitaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewReservacitaEditLink}"/>
+                <br />
+                <h:commandLink action="#{reservacitaController.prepareCreate}" value="#{bundle.ViewReservacitaCreateLink}" />
+                <br />
+                <h:commandLink action="#{reservacitaController.prepareList}" value="#{bundle.ViewReservacitaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewReservacitaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMascotaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_idMascota}" for="idMascota" />
+                    <h:inputText id="idMascota" value="#{mascotaController.selected.idMascota}" title="#{bundle.CreateMascotaTitle_idMascota}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_idMascota}"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{mascotaController.selected.nombre}" title="#{bundle.CreateMascotaTitle_nombre}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_tipoMascota}" for="tipoMascota" />
+                    <h:inputText id="tipoMascota" value="#{mascotaController.selected.tipoMascota}" title="#{bundle.CreateMascotaTitle_tipoMascota}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_tipoMascota}"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_raza}" for="raza" />
+                    <h:inputText id="raza" value="#{mascotaController.selected.raza}" title="#{bundle.CreateMascotaTitle_raza}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_raza}"/>
+                    <h:outputLabel value="#{bundle.CreateMascotaLabel_idcliente}" for="idcliente" />
+                    <h:selectOneMenu id="idcliente" value="#{mascotaController.selected.idcliente}" title="#{bundle.CreateMascotaTitle_idcliente}" required="true" requiredMessage="#{bundle.CreateMascotaRequiredMessage_idcliente}">
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mascotaController.create}" value="#{bundle.CreateMascotaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{mascotaController.prepareList}" value="#{bundle.CreateMascotaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMascotaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListReservacitaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListReservacitaEmpty}" rendered="#{reservacitaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{reservacitaController.items.rowCount > 0}">
+                    <h:outputText value="#{reservacitaController.pagination.pageFirstItem + 1}..#{reservacitaController.pagination.pageLastItem + 1}/#{reservacitaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{reservacitaController.previous}" value="#{bundle.Previous} #{reservacitaController.pagination.pageSize}" rendered="#{reservacitaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{reservacitaController.next}" value="#{bundle.Next} #{reservacitaController.pagination.pageSize}" rendered="#{reservacitaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{reservacitaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReservacitaTitle_idReserva}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idReserva}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReservacitaTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReservacitaTitle_apellido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellido}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReservacitaTitle_correo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.correo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReservacitaTitle_telefono}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefono}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReservacitaTitle_nombreMascota}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreMascota}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReservacitaTitle_tipoMascota}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoMascota}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReservacitaTitle_tipoServicio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipoServicio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReservacitaTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{reservacitaController.prepareView}" value="#{bundle.ListReservacitaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{reservacitaController.prepareEdit}" value="#{bundle.ListReservacitaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{reservacitaController.destroy}" value="#{bundle.ListReservacitaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{reservacitaController.prepareCreate}" value="#{bundle.ListReservacitaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListReservacitaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

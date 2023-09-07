@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditReservacitaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditReservacitaLabel_idReserva}" for="idReserva" />
+                    <h:inputText id="idReserva" value="#{reservacitaController.selected.idReserva}" title="#{bundle.EditReservacitaTitle_idReserva}" required="true" requiredMessage="#{bundle.EditReservacitaRequiredMessage_idReserva}"/>
+                    <h:outputLabel value="#{bundle.EditReservacitaLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{reservacitaController.selected.nombre}" title="#{bundle.EditReservacitaTitle_nombre}" required="true" requiredMessage="#{bundle.EditReservacitaRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditReservacitaLabel_apellido}" for="apellido" />
+                    <h:inputText id="apellido" value="#{reservacitaController.selected.apellido}" title="#{bundle.EditReservacitaTitle_apellido}" required="true" requiredMessage="#{bundle.EditReservacitaRequiredMessage_apellido}"/>
+                    <h:outputLabel value="#{bundle.EditReservacitaLabel_correo}" for="correo" />
+                    <h:inputText id="correo" value="#{reservacitaController.selected.correo}" title="#{bundle.EditReservacitaTitle_correo}" required="true" requiredMessage="#{bundle.EditReservacitaRequiredMessage_correo}"/>
+                    <h:outputLabel value="#{bundle.EditReservacitaLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{reservacitaController.selected.telefono}" title="#{bundle.EditReservacitaTitle_telefono}" required="true" requiredMessage="#{bundle.EditReservacitaRequiredMessage_telefono}"/>
+                    <h:outputLabel value="#{bundle.EditReservacitaLabel_nombreMascota}" for="nombreMascota" />
+                    <h:inputText id="nombreMascota" value="#{reservacitaController.selected.nombreMascota}" title="#{bundle.EditReservacitaTitle_nombreMascota}" required="true" requiredMessage="#{bundle.EditReservacitaRequiredMessage_nombreMascota}"/>
+                    <h:outputLabel value="#{bundle.EditReservacitaLabel_tipoMascota}" for="tipoMascota" />
+                    <h:inputText id="tipoMascota" value="#{reservacitaController.selected.tipoMascota}" title="#{bundle.EditReservacitaTitle_tipoMascota}" required="true" requiredMessage="#{bundle.EditReservacitaRequiredMessage_tipoMascota}"/>
+                    <h:outputLabel value="#{bundle.EditReservacitaLabel_tipoServicio}" for="tipoServicio" />
+                    <h:inputText id="tipoServicio" value="#{reservacitaController.selected.tipoServicio}" title="#{bundle.EditReservacitaTitle_tipoServicio}" required="true" requiredMessage="#{bundle.EditReservacitaRequiredMessage_tipoServicio}"/>
+                    <h:outputLabel value="#{bundle.EditReservacitaLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{reservacitaController.selected.estado}" title="#{bundle.EditReservacitaTitle_estado}" required="true" requiredMessage="#{bundle.EditReservacitaRequiredMessage_estado}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{reservacitaController.update}" value="#{bundle.EditReservacitaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditReservacitaViewLink}"/>
+                <br />
+                <h:commandLink action="#{reservacitaController.prepareList}" value="#{bundle.EditReservacitaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditReservacitaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

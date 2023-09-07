@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVeterinarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVeterinarioLabel_idAsis}" for="idAsis" />
+                    <h:inputText id="idAsis" value="#{veterinarioController.selected.idAsis}" title="#{bundle.EditVeterinarioTitle_idAsis}" required="true" requiredMessage="#{bundle.EditVeterinarioRequiredMessage_idAsis}"/>
+                    <h:outputLabel value="#{bundle.EditVeterinarioLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{veterinarioController.selected.nombre}" title="#{bundle.EditVeterinarioTitle_nombre}" required="true" requiredMessage="#{bundle.EditVeterinarioRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditVeterinarioLabel_apellido}" for="apellido" />
+                    <h:inputText id="apellido" value="#{veterinarioController.selected.apellido}" title="#{bundle.EditVeterinarioTitle_apellido}" required="true" requiredMessage="#{bundle.EditVeterinarioRequiredMessage_apellido}"/>
+                    <h:outputLabel value="#{bundle.EditVeterinarioLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{veterinarioController.selected.direccion}" title="#{bundle.EditVeterinarioTitle_direccion}" />
+                    <h:outputLabel value="#{bundle.EditVeterinarioLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{veterinarioController.selected.telefono}" title="#{bundle.EditVeterinarioTitle_telefono}" required="true" requiredMessage="#{bundle.EditVeterinarioRequiredMessage_telefono}"/>
+                    <h:outputLabel value="#{bundle.EditVeterinarioLabel_correo}" for="correo" />
+                    <h:inputText id="correo" value="#{veterinarioController.selected.correo}" title="#{bundle.EditVeterinarioTitle_correo}" />
+                    <h:outputLabel value="#{bundle.EditVeterinarioLabel_cedula}" for="cedula" />
+                    <h:inputText id="cedula" value="#{veterinarioController.selected.cedula}" title="#{bundle.EditVeterinarioTitle_cedula}" required="true" requiredMessage="#{bundle.EditVeterinarioRequiredMessage_cedula}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{veterinarioController.update}" value="#{bundle.EditVeterinarioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditVeterinarioViewLink}"/>
+                <br />
+                <h:commandLink action="#{veterinarioController.prepareList}" value="#{bundle.EditVeterinarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditVeterinarioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

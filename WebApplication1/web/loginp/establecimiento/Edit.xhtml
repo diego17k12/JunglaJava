@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEstablecimientoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEstablecimientoLabel_idEstablecimiento}" for="idEstablecimiento" />
+                    <h:inputText id="idEstablecimiento" value="#{establecimientoController.selected.idEstablecimiento}" title="#{bundle.EditEstablecimientoTitle_idEstablecimiento}" required="true" requiredMessage="#{bundle.EditEstablecimientoRequiredMessage_idEstablecimiento}"/>
+                    <h:outputLabel value="#{bundle.EditEstablecimientoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{establecimientoController.selected.nombre}" title="#{bundle.EditEstablecimientoTitle_nombre}" required="true" requiredMessage="#{bundle.EditEstablecimientoRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditEstablecimientoLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{establecimientoController.selected.direccion}" title="#{bundle.EditEstablecimientoTitle_direccion}" />
+                    <h:outputLabel value="#{bundle.EditEstablecimientoLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{establecimientoController.selected.telefono}" title="#{bundle.EditEstablecimientoTitle_telefono}" required="true" requiredMessage="#{bundle.EditEstablecimientoRequiredMessage_telefono}"/>
+                    <h:outputLabel value="#{bundle.EditEstablecimientoLabel_correo}" for="correo" />
+                    <h:inputText id="correo" value="#{establecimientoController.selected.correo}" title="#{bundle.EditEstablecimientoTitle_correo}" />
+                </h:panelGrid>
+                <h:commandLink action="#{establecimientoController.update}" value="#{bundle.EditEstablecimientoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEstablecimientoViewLink}"/>
+                <br />
+                <h:commandLink action="#{establecimientoController.prepareList}" value="#{bundle.EditEstablecimientoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEstablecimientoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

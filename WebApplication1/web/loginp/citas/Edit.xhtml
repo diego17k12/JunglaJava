@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCitasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCitasLabel_idCitas}" for="idCitas" />
+                    <h:inputText id="idCitas" value="#{citasController.selected.idCitas}" title="#{bundle.EditCitasTitle_idCitas}" required="true" requiredMessage="#{bundle.EditCitasRequiredMessage_idCitas}"/>
+                    <h:outputLabel value="#{bundle.EditCitasLabel_fechaCitas}" for="fechaCitas" />
+                    <h:inputText id="fechaCitas" value="#{citasController.selected.fechaCitas}" title="#{bundle.EditCitasTitle_fechaCitas}" required="true" requiredMessage="#{bundle.EditCitasRequiredMessage_fechaCitas}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCitasLabel_tipoServicio}" for="tipoServicio" />
+                    <h:inputText id="tipoServicio" value="#{citasController.selected.tipoServicio}" title="#{bundle.EditCitasTitle_tipoServicio}" required="true" requiredMessage="#{bundle.EditCitasRequiredMessage_tipoServicio}"/>
+                    <h:outputLabel value="#{bundle.EditCitasLabel_idVeterinario}" for="idVeterinario" />
+                    <h:selectOneMenu id="idVeterinario" value="#{citasController.selected.idVeterinario}" title="#{bundle.EditCitasTitle_idVeterinario}" required="true" requiredMessage="#{bundle.EditCitasRequiredMessage_idVeterinario}">
+                        <f:selectItems value="#{veterinarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCitasLabel_idMascota}" for="idMascota" />
+                    <h:selectOneMenu id="idMascota" value="#{citasController.selected.idMascota}" title="#{bundle.EditCitasTitle_idMascota}" required="true" requiredMessage="#{bundle.EditCitasRequiredMessage_idMascota}">
+                        <f:selectItems value="#{mascotaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{citasController.update}" value="#{bundle.EditCitasSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCitasViewLink}"/>
+                <br />
+                <h:commandLink action="#{citasController.prepareList}" value="#{bundle.EditCitasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCitasIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

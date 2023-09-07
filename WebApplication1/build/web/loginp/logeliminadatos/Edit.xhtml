@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditLogeliminadatosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditLogeliminadatosLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{logeliminadatosController.selected.id}" title="#{bundle.EditLogeliminadatosTitle_id}" required="true" requiredMessage="#{bundle.EditLogeliminadatosRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditLogeliminadatosLabel_usuario}" for="usuario" />
+                    <h:inputText id="usuario" value="#{logeliminadatosController.selected.usuario}" title="#{bundle.EditLogeliminadatosTitle_usuario}" required="true" requiredMessage="#{bundle.EditLogeliminadatosRequiredMessage_usuario}"/>
+                    <h:outputLabel value="#{bundle.EditLogeliminadatosLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{logeliminadatosController.selected.fecha}" title="#{bundle.EditLogeliminadatosTitle_fecha}" required="true" requiredMessage="#{bundle.EditLogeliminadatosRequiredMessage_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditLogeliminadatosLabel_hora}" for="hora" />
+                    <h:inputText id="hora" value="#{logeliminadatosController.selected.hora}" title="#{bundle.EditLogeliminadatosTitle_hora}" required="true" requiredMessage="#{bundle.EditLogeliminadatosRequiredMessage_hora}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditLogeliminadatosLabel_registroEliminado}" for="registroEliminado" />
+                    <h:inputText id="registroEliminado" value="#{logeliminadatosController.selected.registroEliminado}" title="#{bundle.EditLogeliminadatosTitle_registroEliminado}" required="true" requiredMessage="#{bundle.EditLogeliminadatosRequiredMessage_registroEliminado}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{logeliminadatosController.update}" value="#{bundle.EditLogeliminadatosSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditLogeliminadatosViewLink}"/>
+                <br />
+                <h:commandLink action="#{logeliminadatosController.prepareList}" value="#{bundle.EditLogeliminadatosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditLogeliminadatosIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

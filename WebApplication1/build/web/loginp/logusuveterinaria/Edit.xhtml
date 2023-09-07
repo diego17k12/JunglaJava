@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditLogusuveterinariaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditLogusuveterinariaLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{logusuveterinariaController.selected.id}" title="#{bundle.EditLogusuveterinariaTitle_id}" required="true" requiredMessage="#{bundle.EditLogusuveterinariaRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditLogusuveterinariaLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{logusuveterinariaController.selected.fecha}" title="#{bundle.EditLogusuveterinariaTitle_fecha}" required="true" requiredMessage="#{bundle.EditLogusuveterinariaRequiredMessage_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditLogusuveterinariaLabel_hora}" for="hora" />
+                    <h:inputText id="hora" value="#{logusuveterinariaController.selected.hora}" title="#{bundle.EditLogusuveterinariaTitle_hora}" required="true" requiredMessage="#{bundle.EditLogusuveterinariaRequiredMessage_hora}">
+                        <f:convertDateTime pattern="HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditLogusuveterinariaLabel_nombreUsuario}" for="nombreUsuario" />
+                    <h:inputText id="nombreUsuario" value="#{logusuveterinariaController.selected.nombreUsuario}" title="#{bundle.EditLogusuveterinariaTitle_nombreUsuario}" required="true" requiredMessage="#{bundle.EditLogusuveterinariaRequiredMessage_nombreUsuario}"/>
+                    <h:outputLabel value="#{bundle.EditLogusuveterinariaLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{logusuveterinariaController.selected.estado}" title="#{bundle.EditLogusuveterinariaTitle_estado}" />
+                    <h:outputLabel value="#{bundle.EditLogusuveterinariaLabel_formulario}" for="formulario" />
+                    <h:inputText id="formulario" value="#{logusuveterinariaController.selected.formulario}" title="#{bundle.EditLogusuveterinariaTitle_formulario}" />
+                </h:panelGrid>
+                <h:commandLink action="#{logusuveterinariaController.update}" value="#{bundle.EditLogusuveterinariaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditLogusuveterinariaViewLink}"/>
+                <br />
+                <h:commandLink action="#{logusuveterinariaController.prepareList}" value="#{bundle.EditLogusuveterinariaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditLogusuveterinariaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

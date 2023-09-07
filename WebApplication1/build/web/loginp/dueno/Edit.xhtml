@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDuenoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDuenoLabel_idDueno}" for="idDueno" />
+                    <h:inputText id="idDueno" value="#{duenoController.selected.idDueno}" title="#{bundle.EditDuenoTitle_idDueno}" required="true" requiredMessage="#{bundle.EditDuenoRequiredMessage_idDueno}"/>
+                    <h:outputLabel value="#{bundle.EditDuenoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{duenoController.selected.nombre}" title="#{bundle.EditDuenoTitle_nombre}" required="true" requiredMessage="#{bundle.EditDuenoRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditDuenoLabel_apellido}" for="apellido" />
+                    <h:inputText id="apellido" value="#{duenoController.selected.apellido}" title="#{bundle.EditDuenoTitle_apellido}" required="true" requiredMessage="#{bundle.EditDuenoRequiredMessage_apellido}"/>
+                    <h:outputLabel value="#{bundle.EditDuenoLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{duenoController.selected.direccion}" title="#{bundle.EditDuenoTitle_direccion}" />
+                    <h:outputLabel value="#{bundle.EditDuenoLabel_celular}" for="celular" />
+                    <h:inputText id="celular" value="#{duenoController.selected.celular}" title="#{bundle.EditDuenoTitle_celular}" required="true" requiredMessage="#{bundle.EditDuenoRequiredMessage_celular}"/>
+                    <h:outputLabel value="#{bundle.EditDuenoLabel_correo}" for="correo" />
+                    <h:inputText id="correo" value="#{duenoController.selected.correo}" title="#{bundle.EditDuenoTitle_correo}" />
+                </h:panelGrid>
+                <h:commandLink action="#{duenoController.update}" value="#{bundle.EditDuenoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDuenoViewLink}"/>
+                <br />
+                <h:commandLink action="#{duenoController.prepareList}" value="#{bundle.EditDuenoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDuenoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDuenoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDuenoEmpty}" rendered="#{duenoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{duenoController.items.rowCount > 0}">
+                    <h:outputText value="#{duenoController.pagination.pageFirstItem + 1}..#{duenoController.pagination.pageLastItem + 1}/#{duenoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{duenoController.previous}" value="#{bundle.Previous} #{duenoController.pagination.pageSize}" rendered="#{duenoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{duenoController.next}" value="#{bundle.Next} #{duenoController.pagination.pageSize}" rendered="#{duenoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{duenoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDuenoTitle_idDueno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDueno}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDuenoTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDuenoTitle_apellido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellido}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDuenoTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDuenoTitle_celular}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.celular}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDuenoTitle_correo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.correo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{duenoController.prepareView}" value="#{bundle.ListDuenoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{duenoController.prepareEdit}" value="#{bundle.ListDuenoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{duenoController.destroy}" value="#{bundle.ListDuenoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{duenoController.prepareCreate}" value="#{bundle.ListDuenoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDuenoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

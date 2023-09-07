@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEstablecimientoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEstablecimientoLabel_idEstablecimiento}"/>
+                    <h:outputText value="#{establecimientoController.selected.idEstablecimiento}" title="#{bundle.ViewEstablecimientoTitle_idEstablecimiento}"/>
+                    <h:outputText value="#{bundle.ViewEstablecimientoLabel_nombre}"/>
+                    <h:outputText value="#{establecimientoController.selected.nombre}" title="#{bundle.ViewEstablecimientoTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewEstablecimientoLabel_direccion}"/>
+                    <h:outputText value="#{establecimientoController.selected.direccion}" title="#{bundle.ViewEstablecimientoTitle_direccion}"/>
+                    <h:outputText value="#{bundle.ViewEstablecimientoLabel_telefono}"/>
+                    <h:outputText value="#{establecimientoController.selected.telefono}" title="#{bundle.ViewEstablecimientoTitle_telefono}"/>
+                    <h:outputText value="#{bundle.ViewEstablecimientoLabel_correo}"/>
+                    <h:outputText value="#{establecimientoController.selected.correo}" title="#{bundle.ViewEstablecimientoTitle_correo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{establecimientoController.destroyAndView}" value="#{bundle.ViewEstablecimientoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEstablecimientoEditLink}"/>
+                <br />
+                <h:commandLink action="#{establecimientoController.prepareCreate}" value="#{bundle.ViewEstablecimientoCreateLink}" />
+                <br />
+                <h:commandLink action="#{establecimientoController.prepareList}" value="#{bundle.ViewEstablecimientoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEstablecimientoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

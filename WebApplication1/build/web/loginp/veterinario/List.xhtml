@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListVeterinarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListVeterinarioEmpty}" rendered="#{veterinarioController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{veterinarioController.items.rowCount > 0}">
+                    <h:outputText value="#{veterinarioController.pagination.pageFirstItem + 1}..#{veterinarioController.pagination.pageLastItem + 1}/#{veterinarioController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{veterinarioController.previous}" value="#{bundle.Previous} #{veterinarioController.pagination.pageSize}" rendered="#{veterinarioController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{veterinarioController.next}" value="#{bundle.Next} #{veterinarioController.pagination.pageSize}" rendered="#{veterinarioController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{veterinarioController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVeterinarioTitle_idAsis}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAsis}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVeterinarioTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVeterinarioTitle_apellido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellido}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVeterinarioTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVeterinarioTitle_telefono}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefono}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVeterinarioTitle_correo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.correo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVeterinarioTitle_cedula}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cedula}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{veterinarioController.prepareView}" value="#{bundle.ListVeterinarioViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{veterinarioController.prepareEdit}" value="#{bundle.ListVeterinarioEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{veterinarioController.destroy}" value="#{bundle.ListVeterinarioDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{veterinarioController.prepareCreate}" value="#{bundle.ListVeterinarioCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListVeterinarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

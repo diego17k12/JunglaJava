@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVeteusuTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewVeteusuLabel_idVeteUsu}"/>
+                    <h:outputText value="#{veteusuController.selected.idVeteUsu}" title="#{bundle.ViewVeteusuTitle_idVeteUsu}"/>
+                    <h:outputText value="#{bundle.ViewVeteusuLabel_idUsu}"/>
+                    <h:outputText value="#{veteusuController.selected.idUsu}" title="#{bundle.ViewVeteusuTitle_idUsu}"/>
+                    <h:outputText value="#{bundle.ViewVeteusuLabel_idVeterinario}"/>
+                    <h:outputText value="#{veteusuController.selected.idVeterinario}" title="#{bundle.ViewVeteusuTitle_idVeterinario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{veteusuController.destroyAndView}" value="#{bundle.ViewVeteusuDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewVeteusuEditLink}"/>
+                <br />
+                <h:commandLink action="#{veteusuController.prepareCreate}" value="#{bundle.ViewVeteusuCreateLink}" />
+                <br />
+                <h:commandLink action="#{veteusuController.prepareList}" value="#{bundle.ViewVeteusuShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewVeteusuIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

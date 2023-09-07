@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListLogeliminadatosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListLogeliminadatosEmpty}" rendered="#{logeliminadatosController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{logeliminadatosController.items.rowCount > 0}">
+                    <h:outputText value="#{logeliminadatosController.pagination.pageFirstItem + 1}..#{logeliminadatosController.pagination.pageLastItem + 1}/#{logeliminadatosController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{logeliminadatosController.previous}" value="#{bundle.Previous} #{logeliminadatosController.pagination.pageSize}" rendered="#{logeliminadatosController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{logeliminadatosController.next}" value="#{bundle.Next} #{logeliminadatosController.pagination.pageSize}" rendered="#{logeliminadatosController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{logeliminadatosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogeliminadatosTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogeliminadatosTitle_usuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogeliminadatosTitle_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogeliminadatosTitle_hora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hora}">
+                                <f:convertDateTime pattern="HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLogeliminadatosTitle_registroEliminado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.registroEliminado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{logeliminadatosController.prepareView}" value="#{bundle.ListLogeliminadatosViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{logeliminadatosController.prepareEdit}" value="#{bundle.ListLogeliminadatosEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{logeliminadatosController.destroy}" value="#{bundle.ListLogeliminadatosDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{logeliminadatosController.prepareCreate}" value="#{bundle.ListLogeliminadatosCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListLogeliminadatosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
